@@ -1,12 +1,10 @@
 package map;
 
-import options.BoardOpt;
-
 public class Board{
 
-    public Board(){
-        BoardOpt opt = new BoardOpt();
-        board = new Cell[opt.MAX_ROWS][opt.MAX_COLS];
+    public Board(int rows,int cols){
+       
+        board = new Cell[rows][cols];
         for(int i = 0;i < board.length;++i){
             for(int j = 0;j < board[i].length;++j){
                 board[i][j] = new Cell(i,j); //Empty cell
