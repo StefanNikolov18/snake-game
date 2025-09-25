@@ -9,7 +9,10 @@ public class Game{
 
     public Game(){
         snake = new Snake();
-        board = new Board();
+
+        //Create board
+        BoardOpt optionsB = new BoardOpt();
+        board = new Board(optionsB.MAX_ROWS,optionsB.MAX_COLS);
 
         //Place starting positions
         StartPosOpt posOpt = new StartPosOpt();
@@ -37,4 +40,5 @@ public class Game{
     //data
     private Snake snake;
     private Board board;
+    private boolean isDead;
 }
