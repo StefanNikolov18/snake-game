@@ -1,8 +1,7 @@
-import gamepanel.GamePanel;
+import gamepages.MenuPage;
 
 class Main {
     public static void main(String[] args) {
-        GamePanel gamePanel = new GamePanel();
-
+        MenuPage start = new MenuPage();
     }
 }

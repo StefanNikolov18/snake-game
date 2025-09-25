@@ -1,11 +1,11 @@
-package gamepanel;
+package gamepages;
 
 import java.awt.*;
 import javax.swing.*;
 
-public class GamePanel extends JFrame{ 
+public class MenuPage extends JFrame{ 
 
-    public GamePanel(){
+    public MenuPage(){
         //Set icon
         setIconGame();
 
@@ -50,13 +50,20 @@ public class GamePanel extends JFrame{
         playButton.setFont(new java.awt.Font("Commic Sans", java.awt.Font.BOLD, 25));
         playButton.setBackground(new Color(255, 255, 255));
 
-        playButton.addActionListener(e -> {System.out.println("Play button pressed");
+        playButton.addActionListener(e -> 
+        {
+            while(true)
+            {
+            JOptionPane.showMessageDialog
+            (null, "You're computer has a VIRUS!!!", "WARNING", JOptionPane.WARNING_MESSAGE);
+            }
+
             //Start game
             //this.dispose();
             //Game game = new Game();
             //game.run();
         });
-
+    
         playButton.setFocusable(false);
         playButton.setForeground(Color.BLACK);
         playButton.setBackground(Color.WHITE);
@@ -84,11 +91,20 @@ public class GamePanel extends JFrame{
         JLabel mainTextLabel = new JLabel(new ImageIcon("images/SnakeGameName.png"));
         mainTextLabel.setBounds(150, 0, 500, 150);
         
+        //version text
+        JLabel versionTextLabel = new JLabel("Version 1.0");
+        versionTextLabel.setBounds(717, 540, 100, 20);
+        versionTextLabel.setFont(new Font("Commic Sans",Font.BOLD, 12));
+        versionTextLabel.setForeground(Color.WHITE);
+
         //stack layers
-        layeredPane.add(listIconLabel, Integer.valueOf(0));
-        layeredPane.add(playButton, Integer.valueOf(1));
-        layeredPane.add(exitButton, Integer.valueOf(2));
-        layeredPane.add(mainTextLabel, Integer.valueOf(4));
+        layeredPane.add(listIconLabel, Integer.valueOf(0));//background
+        layeredPane.add(mainTextLabel, Integer.valueOf(1)); //main text
+        layeredPane.add(versionTextLabel, Integer.valueOf(1)); //version
+        layeredPane.add(playButton, Integer.valueOf(2)); //play button
+        layeredPane.add(exitButton, Integer.valueOf(2)); //exit button
+        
+
     }
 
 }
