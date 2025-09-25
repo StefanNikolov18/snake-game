@@ -4,28 +4,48 @@ import java.awt.*;
 import javax.swing.*;
 
 public class GamePanel extends JFrame{ 
-    
-    private JButton playButton;
-    private JButton exitButton;
 
     public GamePanel(){
-         //Set icon
+        //Set icon
+        setIconGame();
+
+        //JFrame settings
+        setTitle("Snake Game");
+        setSize(800,600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+         //Layer interface
+        JLayeredPane layeredPane = new JLayeredPane();
+        setLayersInStartMenu(layeredPane);
+
+        setVisible(true);
+        setResizable(false);
+        setLayout(new BorderLayout());
+        getContentPane().setBackground(new Color(0,130,0));
+        
+        this.add(layeredPane, BorderLayout.CENTER);
+        
+    }
+
+    private void setIconGame(){
         ImageIcon icon = new ImageIcon("images/snakeIcon.png");
         this.setIconImage(icon.getImage());
-        
+    }
 
-        //Layer
-        JLayeredPane layeredPane = new JLayeredPane();
+    private void setLayersInStartMenu(JLayeredPane layeredPane){
+
+         //set dimentions
         layeredPane.setPreferredSize(new Dimension(800, 600));
 
-        //Background
+        //set Background
         JLabel backgroundLabel = new JLabel(new ImageIcon(
-            new ImageIcon("images/wallpaperMain.jpg").getImage().getScaledInstance(800, 600, Image.SCALE_SMOOTH)
+            new ImageIcon("images/wallpaperMain.jpg").getImage()
         ));
         backgroundLabel.setBounds(0, 0, 800, 600);
         layeredPane.add(backgroundLabel, Integer.valueOf(-1)); // най-долния слой
 
-        //Name
+        //set Name
         JLabel nameGame = new JLabel("SNAKE GAME");
         nameGame.setFont(new Font("Big", Font.BOLD, 50));
         nameGame.setForeground(Color.BLACK);
@@ -33,7 +53,7 @@ public class GamePanel extends JFrame{
         nameGame.setBounds(225, 35, 400, 100);
 
         //set play button
-        this.playButton = new JButton();
+        JButton playButton = new JButton();
         playButton.setText("Play");
         playButton.setBounds(315, 215, 175, 60);
         playButton.setFont(new java.awt.Font("Commic Sans", java.awt.Font.BOLD, 25));
@@ -49,11 +69,9 @@ public class GamePanel extends JFrame{
         playButton.setFocusable(false);
         playButton.setForeground(Color.BLACK);
         playButton.setBackground(Color.WHITE);
-        playButton.setBorder(BorderFactory.createEtchedBorder());
-
 
         //set exit button
-        this.exitButton = new JButton();
+        JButton exitButton = new JButton();
         exitButton.setText("Exit");
         exitButton.setBounds(350, 300, 100, 50);
         exitButton.setFont(new java.awt.Font("Commic Sans", java.awt.Font.BOLD, 20));
@@ -64,35 +82,19 @@ public class GamePanel extends JFrame{
         exitButton.setFocusable(false);
         exitButton.setForeground(Color.BLACK);
         exitButton.setBackground(Color.WHITE);
-        exitButton.setBorder(BorderFactory.createEtchedBorder());
 
         //List icon
         JLabel listIconLabel = new JLabel(new ImageIcon(
-            new ImageIcon("images/List.png").getImage().getScaledInstance(400, 500, Image.SCALE_SMOOTH)
+            new ImageIcon("images/List.png").getImage()
         ));
         listIconLabel.setBounds(180, 30, 400, 500);
 
         
+        //stack layers
         layeredPane.add(listIconLabel, Integer.valueOf(0));
         layeredPane.add(playButton, Integer.valueOf(1));
         layeredPane.add(exitButton, Integer.valueOf(2));
         layeredPane.add(nameGame, Integer.valueOf(3));
-        
-        
-        
-
-        //JFrame settings
-        setTitle("Snake Game");
-        setSize(800,600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setResizable(false);
-        this.setLayout(new BorderLayout());
-        this.getContentPane().setBackground(new Color(0,130,0));
-        this.add(layeredPane, BorderLayout.CENTER);
-
-
     }
 
 }
