@@ -39,9 +39,7 @@ public class GamePanel extends JFrame{
         layeredPane.setPreferredSize(new Dimension(800, 600));
 
         //set Background
-        JLabel backgroundLabel = new JLabel(new ImageIcon(
-            new ImageIcon("images/wallpaperMain.jpg").getImage()
-        ));
+        JLabel backgroundLabel = new JLabel(new ImageIcon("images/wallpaperMain.jpg"));
         backgroundLabel.setBounds(0, 0, 800, 600);
         layeredPane.add(backgroundLabel, Integer.valueOf(-1)); // най-долния слой
 
@@ -84,9 +82,8 @@ public class GamePanel extends JFrame{
         exitButton.setBackground(Color.WHITE);
 
         //List icon
-        JLabel listIconLabel = new JLabel(new ImageIcon(
-            new ImageIcon("images/List.png").getImage()
-        ));
+        JLabel listIconLabel = new JLabel(new ImageIcon("images/List.png"));
+
         listIconLabel.setBounds(180, 30, 400, 500);
 
         
