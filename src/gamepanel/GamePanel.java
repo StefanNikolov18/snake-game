@@ -43,13 +43,6 @@ public class GamePanel extends JFrame{
         backgroundLabel.setBounds(0, 0, 800, 600);
         layeredPane.add(backgroundLabel, Integer.valueOf(-1)); // най-долния слой
 
-        //set Name
-        JLabel nameGame = new JLabel("SNAKE GAME");
-        nameGame.setFont(new Font("Big", Font.BOLD, 50));
-        nameGame.setForeground(Color.BLACK);
-        nameGame.setOpaque(false); // transparent
-        nameGame.setBounds(225, 35, 400, 100);
-
         //set play button
         JButton playButton = new JButton();
         playButton.setText("Play");
@@ -86,12 +79,16 @@ public class GamePanel extends JFrame{
 
         listIconLabel.setBounds(180, 30, 400, 500);
 
+
+        //set Main text Snake Game name
+        JLabel mainTextLabel = new JLabel(new ImageIcon("images/SnakeGameName.png"));
+        mainTextLabel.setBounds(150, 0, 500, 150);
         
         //stack layers
         layeredPane.add(listIconLabel, Integer.valueOf(0));
         layeredPane.add(playButton, Integer.valueOf(1));
         layeredPane.add(exitButton, Integer.valueOf(2));
-        layeredPane.add(nameGame, Integer.valueOf(3));
+        layeredPane.add(mainTextLabel, Integer.valueOf(4));
     }
 
 }
