@@ -24,6 +24,13 @@ public class Board{
         board[row][col].setType(type);
     }
 
+    public boolean checkOutside(Cell c){
+        return c.getRow() < 0 || c.getCol() < 0 
+            || c.getRow() > board.length
+            || c.getCol() > board[0].length;
+        
+    }
+
 
     private final Cell[][] board;
 }

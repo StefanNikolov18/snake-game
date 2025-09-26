@@ -1,4 +1,4 @@
-import gamepages.GameFrame;
+import gamepages.*;
 
 class Main {
     public static void main(String[] args) {

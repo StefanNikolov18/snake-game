@@ -11,6 +11,12 @@ public class Snake{
         snakeMap = new HashMap<>();
     }
 
+    public Snake(Cell startCell){
+        this();
+        snake.addFirst(startCell);
+        snakeMap.put(startCell,true);
+    }
+
     //getters
     public Cell getHead(){
         return snake.getFirst();
@@ -31,7 +37,7 @@ public class Snake{
     }
 
     // snake moves
-    public void Move(Cell c){   // 0(1)
+    public void move(Cell c){   // 0(1)
         snake.addFirst(c); 
         snakeMap.put(c,true);
         removeTail(); 

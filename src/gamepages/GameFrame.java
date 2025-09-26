@@ -8,7 +8,6 @@ public class GameFrame extends JFrame{
     
     private MenuPage menuPage;
     private LoadingPage loadingPage;
-
     private GamePage gamePage;
 
 
