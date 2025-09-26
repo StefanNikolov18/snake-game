@@ -3,36 +3,27 @@ package gamepages;
 import java.awt.*;
 import javax.swing.*;
 
-public class MenuPage extends JFrame{ 
+public class MenuPage{ 
+    private final GameFrame parent;
+    private final JLayeredPane layeredPane;
 
-    public MenuPage(){
-        //Set icon
-        setIconGame();
-
-        //JFrame settings
-        setTitle("Snake Game");
-        setSize(800,600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+    public MenuPage(GameFrame parent){
+        this.parent = parent;
 
          //Layer interface
-        JLayeredPane layeredPane = new JLayeredPane();
+        this.layeredPane = new JLayeredPane();
         setLayersInStartMenu(layeredPane);
-
-        setVisible(true);
-        setResizable(false);
-        setLayout(new BorderLayout());
-        getContentPane().setBackground(new Color(0,130,0));
-        
-        this.add(layeredPane, BorderLayout.CENTER);
-        
     }
 
-    private void setIconGame(){
-        ImageIcon icon = new ImageIcon("images/snakeIcon.png");
-        this.setIconImage(icon.getImage());
+    public JLayeredPane getLayeredPane(){
+        return this.layeredPane;
+    }
+    
+    public GameFrame getParent(){
+        return this.parent;
     }
 
+    //Menu layers creation
     private void setLayersInStartMenu(JLayeredPane layeredPane){
 
          //set dimentions
@@ -41,7 +32,6 @@ public class MenuPage extends JFrame{
         //set Background
         JLabel backgroundLabel = new JLabel(new ImageIcon("images/wallpaperMain.jpg"));
         backgroundLabel.setBounds(0, 0, 800, 600);
-        layeredPane.add(backgroundLabel, Integer.valueOf(-1)); // най-долния слой
 
         //set play button
         JButton playButton = new JButton();
@@ -50,19 +40,7 @@ public class MenuPage extends JFrame{
         playButton.setFont(new java.awt.Font("Commic Sans", java.awt.Font.BOLD, 25));
         playButton.setBackground(new Color(255, 255, 255));
 
-        playButton.addActionListener(e -> 
-        {
-            while(true)
-            {
-            JOptionPane.showMessageDialog
-            (null, "You're computer has a VIRUS!!!", "WARNING", JOptionPane.WARNING_MESSAGE);
-            }
-
-            //Start game
-            //this.dispose();
-            //Game game = new Game();
-            //game.run();
-        });
+        playButton.addActionListener(e -> parent.startGame());
     
         playButton.setFocusable(false);
         playButton.setForeground(Color.BLACK);
@@ -83,9 +61,7 @@ public class MenuPage extends JFrame{
 
         //List icon
         JLabel listIconLabel = new JLabel(new ImageIcon("images/List.png"));
-
         listIconLabel.setBounds(180, 30, 400, 500);
-
 
         //set Main text Snake Game name
         JLabel mainTextLabel = new JLabel(new ImageIcon("images/SnakeGameName.png"));
@@ -98,7 +74,8 @@ public class MenuPage extends JFrame{
         versionTextLabel.setForeground(Color.WHITE);
 
         //stack layers
-        layeredPane.add(listIconLabel, Integer.valueOf(0));//background
+         layeredPane.add(backgroundLabel, Integer.valueOf(-1)); //background
+        layeredPane.add(listIconLabel, Integer.valueOf(1));//list
         layeredPane.add(mainTextLabel, Integer.valueOf(1)); //main text
         layeredPane.add(versionTextLabel, Integer.valueOf(1)); //version
         layeredPane.add(playButton, Integer.valueOf(2)); //play button

@@ -1,7 +1,7 @@
-import gamepages.MenuPage;
+import gamepages.GameFrame;
 
 class Main {
     public static void main(String[] args) {
-        MenuPage start = new MenuPage();
+        GameFrame game = new GameFrame();
     }
 }
