@@ -1,31 +1,51 @@
 package snake;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import map.Cell;
 
 public class Snake{
 
     public Snake(){
-        body = new LinkedList<>();
+        snake = new LinkedList<>();
+        snakeMap = new HashMap<>();
     }
 
-    public LinkedList<Cell> getBody() {
-        return body;
+    //getters
+    public Cell getHead(){
+        return snake.getFirst();
+    }
+    public Cell getTailCell(){
+        return snake.getLast();
     }
 
-    public void addCellToBody(Cell cell){
-        if(cell.getType() != Cell.CellType.APPLE){
-             throw new IllegalArgumentException
-             ("Cell must be of type APPLE to be added to the snake's body.");
-        }
-           
-        body.addFirst(cell);
+    //looks next Cell
+    public boolean isSafe(Cell c){
+        return !snakeMap.containsKey(c); // 0(1)
     }
 
-    public boolean isCellInBody(Cell cell){
-        return body.contains(cell);
+    //added to snake, snakeMap and doesnt remove tail
+    public void eatApple(Cell c){ // 0(1)
+        snake.addFirst(c);
+        snakeMap.put(c,true);
     }
+
+    // snake moves
+    public void Move(Cell c){   // 0(1)
+        snake.addFirst(c); 
+        snakeMap.put(c,true);
+        removeTail(); 
+    }
+
+    //helper for Move(Cell)
+    private void removeTail(){ // 0(1)
+        snakeMap.remove(this.getTailCell());
+        snake.removeLast();
+    }
+
+    
 
     //data
-    private LinkedList<Cell> body;
+    private LinkedList<Cell> snake;
+    private HashMap<Cell,Boolean> snakeMap;
 }

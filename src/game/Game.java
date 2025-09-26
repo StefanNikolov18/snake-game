@@ -11,19 +11,15 @@ public class Game{
         snake = new Snake();
 
         //Create board
-        BoardOpt optionsB = new BoardOpt();
-        board = new Board(optionsB.MAX_ROWS,optionsB.MAX_COLS);
-
-        //Place starting positions
-        StartPosOpt posOpt = new StartPosOpt();
+        board = new Board(BoardOpt.MAX_ROWS,BoardOpt.MAX_COLS);
 
         //Place snake on board
         board.setCellType
-        (posOpt.STARTING_ROW_SNAKE, posOpt.STARTING_COL_SNAKE, Cell.CellType.SNAKE);
+        (StartPosOpt.STARTING_ROW_SNAKE, StartPosOpt.STARTING_COL_SNAKE, Cell.CellType.SNAKE);
 
         //place apple on board
         board.setCellType
-        (posOpt.STARTING_ROW_APPLE, posOpt.STARTING_COL_APPLE, Cell.CellType.APPLE);
+        (StartPosOpt.STARTING_ROW_APPLE, StartPosOpt.STARTING_COL_APPLE, Cell.CellType.APPLE);
 
     }
 
@@ -40,5 +36,5 @@ public class Game{
     //data
     private Snake snake;
     private Board board;
-    private boolean isDead;
+    private boolean isAlive;
 }
