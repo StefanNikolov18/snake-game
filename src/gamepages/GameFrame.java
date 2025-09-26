@@ -47,7 +47,7 @@ public class GameFrame extends JFrame{
  
         loadGame(); //load game
 
-        Timer loadingTime = new Timer(1500,  //timer for better experience
+        Timer loadingTime = new Timer(2000,  //timer for better experience
                 e -> { 
                 ((Timer)e.getSource()).stop();  
                 showGamePanel(); //PLAY

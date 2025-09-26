@@ -74,7 +74,7 @@ public class MenuPage{
         versionTextLabel.setForeground(Color.WHITE);
 
         //stack layers
-         layeredPane.add(backgroundLabel, Integer.valueOf(-1)); //background
+         layeredPane.add(backgroundLabel, Integer.valueOf(0)); //background
         layeredPane.add(listIconLabel, Integer.valueOf(1));//list
         layeredPane.add(mainTextLabel, Integer.valueOf(1)); //main text
         layeredPane.add(versionTextLabel, Integer.valueOf(1)); //version
