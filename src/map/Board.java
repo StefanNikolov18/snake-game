@@ -24,7 +24,17 @@ public class Board{
         board[row][col].setType(type);
     }
 
-    public boolean checkOutside(Cell c){
+    public void updateSnakeCell(Cell newC){
+        board[newC.getRow()][newC.getCol()].
+        setType(Cell.CellType.SNAKE);
+    }
+
+    public void updateTailCell(Cell newC){
+         board[newC.getRow()][newC.getCol()].
+        setType(Cell.CellType.EMPTY);
+    }
+
+    public boolean isOutside(Cell c){
         return c.getRow() < 0 || c.getCol() < 0 
             || c.getRow() > board.length
             || c.getCol() > board[0].length;

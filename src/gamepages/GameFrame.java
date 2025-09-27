@@ -12,6 +12,7 @@ public class GameFrame extends JFrame{
 
 
     public GameFrame(){
+
         //Set icon
         setIconGame();
 
@@ -26,13 +27,12 @@ public class GameFrame extends JFrame{
         setVisible(true);
         setResizable(false);
         setLayout(new BorderLayout());
-        getContentPane().setBackground(new Color(0,130,0)); //green background
 
         this.showMenu();
 
     }
 
-    
+
     public void showMenu(){
         this.getContentPane().removeAll();
         this.add(menuPage.getLayeredPane(), BorderLayout.CENTER);
@@ -64,9 +64,12 @@ public class GameFrame extends JFrame{
 
     private void showGamePanel(){
         this.getContentPane().removeAll();
-        //this.add(gamePanel, BorderLayout.CENTER);
+        this.setLayout(new BorderLayout());
+        this.getContentPane().setBackground(Color.white);
+        this.add(gamePage.getGamePagePanel(), BorderLayout.CENTER);
         this.revalidate();
         this.repaint();
+       
     }
 
      private void showLoadingPage(){

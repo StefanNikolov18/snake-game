@@ -21,7 +21,7 @@ public class Snake{
     public Cell getHead(){
         return snake.getFirst();
     }
-    public Cell getTailCell(){
+    public Cell getTail(){
         return snake.getLast();
     }
 
@@ -45,7 +45,7 @@ public class Snake{
 
     //helper for Move(Cell)
     private void removeTail(){ // 0(1)
-        snakeMap.remove(this.getTailCell());
+        snakeMap.remove(this.getTail());
         snake.removeLast();
     }
 

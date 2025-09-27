@@ -26,39 +26,54 @@ public class Game{
         board.setCellType
         (StartPosOpt.STARTING_ROW_APPLE, StartPosOpt.STARTING_COL_APPLE, Cell.CellType.APPLE);
 
-        isAlive = true;
-
     }
 
-    //public
+
     public boolean goLeft(){
         Cell upcomingCell = new Cell(currentPosHead.getRow() - 1,currentPosHead.getCol());
-        if(!board.checkOutside(upcomingCell))
+        if(board.isOutside(upcomingCell)) //check is outside of border
             return false;
+        else if(!snake.isSafe(upcomingCell)) //looks is snake
+            return false;
+
+        //v isSafeToMove    
+        move(upcomingCell);
 
         return true;
     }
 
     public boolean goRight(){
         Cell upcomingCell = new Cell(currentPosHead.getRow() + 1,currentPosHead.getCol());
-        if(!board.checkOutside(upcomingCell))
+        if(!board.isOutside(upcomingCell))
             return false;
+        else if(!snake.isSafe(upcomingCell))
+            return false;
+
+         move(upcomingCell);    
 
         return true;
     }
 
     public boolean goUp(){
         Cell upcomingCell = new Cell(currentPosHead.getRow(),currentPosHead.getCol() - 1);
-        if(!board.checkOutside(upcomingCell))
+        if(!board.isOutside(upcomingCell))
             return false;
+        else if(!snake.isSafe(upcomingCell))
+            return false;    
+            
+         move(upcomingCell);    
 
         return true;
     }
 
      public boolean goDown(){
         Cell upcomingCell = new Cell(currentPosHead.getRow(),currentPosHead.getCol() + 1);
-        if(!board.checkOutside(upcomingCell))
+        if(!board.isOutside(upcomingCell))
             return false;
+        else if(!snake.isSafe(upcomingCell))
+            return false;
+
+         move(upcomingCell);    
 
         return true;
     }
@@ -66,12 +81,18 @@ public class Game{
 
     public void setAppleRandom(){};
     //private
+    private void move(Cell newC){
+        board.updateSnakeCell(newC);//update cell Snake
+        board.updateTailCell(snake.getTail()); //update cell in Tail Empty
+        snake.move(newC); //move snake
+        
 
+        currentPosHead = newC; //?
+    }
 
 
     //data
     private Snake snake;
     private Cell currentPosHead;
     private Board board;
-    private boolean isAlive;
 }
