@@ -6,20 +6,20 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class GamePage {
+public class GamePage implements ActionListener{
 
     public GamePage(){
         game  = new Game();
 
-        background = new JPanel(null);
-        background.setBackground(Color.black);
+        gamePanel = new GamePanel();
+        //gamePanel.setBackground(Color.green);
 
         snakeHead = new JLabel();
         snakeHead.setBackground(Color.red);
         snakeHead.setBounds(100,100,20,20);
         snakeHead.setOpaque(true);
 
-        background.add(snakeHead);
+        gamePanel.add(snakeHead);
 
 
         upAction = new UpAction();
@@ -27,23 +27,34 @@ public class GamePage {
         leftAction = new LeftAction();
         rightAction = new RightAction();
 
-        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("UP"),"upAction");
+        //set up upkeystroke
+        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW). 
+        put(KeyStroke.getKeyStroke("UP"),"upAction");
         snakeHead.getActionMap().put("upAction",upAction);
-        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"),"downAction");
+
+        //set up downkeystroke
+        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
+        put(KeyStroke.getKeyStroke("DOWN"),"downAction");
         snakeHead.getActionMap().put("downAction",downAction);
-        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("LEFT"),"leftAction");
+
+         //set up leftkeystroke
+        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
+        put(KeyStroke.getKeyStroke("LEFT"),"leftAction");
         snakeHead.getActionMap().put("leftAction",leftAction);
-        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("RIGHT"),"rightAction");
+
+         //set up rightkeystroke
+        snakeHead.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).
+        put(KeyStroke.getKeyStroke("RIGHT"),"rightAction");
         snakeHead.getActionMap().put("rightAction",rightAction);
 
-
+        //focusing head
         snakeHead.setFocusable(true);
         snakeHead.requestFocusInWindow();
 
     }
 
     public JPanel getGamePagePanel(){
-        return background;
+        return gamePanel;
     }
 
     public JLabel getSnakeHead(){
@@ -53,7 +64,7 @@ public class GamePage {
     public class UpAction extends AbstractAction{
         @Override
         public void actionPerformed(ActionEvent e){
-            snakeHead.setLocation(snakeHead.getX(),snakeHead.getY() - 10);
+            snakeHead.setLocation(snakeHead.getX(),snakeHead.getY() - 20);
             
         }
     }
@@ -62,7 +73,7 @@ public class GamePage {
 
         @Override
         public void actionPerformed(ActionEvent e){
-            snakeHead.setLocation(snakeHead.getX(),snakeHead.getY() + 10);
+            snakeHead.setLocation(snakeHead.getX(),snakeHead.getY() + 20);
         }
     }
 
@@ -70,7 +81,7 @@ public class GamePage {
 
         @Override
         public void actionPerformed(ActionEvent e){
-            snakeHead.setLocation(snakeHead.getX() - 10,snakeHead.getY());
+            snakeHead.setLocation(snakeHead.getX() - 20,snakeHead.getY());
         }
     }
 
@@ -78,10 +89,15 @@ public class GamePage {
 
         @Override
         public void actionPerformed(ActionEvent e){
-             snakeHead.setLocation(snakeHead.getX() + 10,snakeHead.getY());
+             snakeHead.setLocation(snakeHead.getX() + 20,snakeHead.getY());
         }
     }
 
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+        
+    }
 
 
 
@@ -90,7 +106,7 @@ public class GamePage {
     private Action leftAction;
     private Action rightAction;
 
-    JPanel background;
+    GamePanel gamePanel;
     JLabel snakeHead;
     private Game game;
 }

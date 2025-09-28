@@ -5,19 +5,15 @@ import javax.swing.*;
 import options.FrameDim;
 
     public class LoadingPage extends JPanel{
-        private Image BackgroundImage;
-        private Image LoadingImage;
-        private Image snakeLoad;
-
-
+        
 
         public LoadingPage(){
             this.setPreferredSize(new Dimension(FrameDim.X_SIZE_FRAME,FrameDim.Y_SIZE_FRAME)); //800x600
             //this.setBackground(new Color(0,130,0)); //green background
 
-            BackgroundImage = new ImageIcon("images/DirtBackgroundLoading.jpg").getImage();
-            LoadingImage = new ImageIcon("images/loadingBar.png").getImage();
-            snakeLoad = new ImageIcon("images/snakeLoading.png").getImage();
+            BackgroundImage = new ImageIcon("images/LoadingPage/DirtBackgroundLoading.jpg").getImage();
+            LoadingImage = new ImageIcon("images/LoadingPage/loadingBar.png").getImage();
+            snakeLoad = new ImageIcon("images/LoadingPage/snakeLoading.png").getImage();
             
         }
 
@@ -35,4 +31,9 @@ import options.FrameDim;
         public JPanel getLoadingPanel(){
             return this;
         }
+
+        //data
+        private Image BackgroundImage;
+        private Image LoadingImage;
+        private Image snakeLoad;
     }

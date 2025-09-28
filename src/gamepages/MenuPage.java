@@ -4,8 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 
 public class MenuPage{ 
-    private final GameFrame parent;
-    private final JLayeredPane layeredPane;
 
     public MenuPage(GameFrame parent){
         this.parent = parent;
@@ -30,7 +28,7 @@ public class MenuPage{
         layeredPane.setPreferredSize(new Dimension(800, 600));
 
         //set Background
-        JLabel backgroundLabel = new JLabel(new ImageIcon("images/wallpaperMain.jpg"));
+        JLabel backgroundLabel = new JLabel(new ImageIcon("images/MenuPage/wallpaperMain.jpg"));
         backgroundLabel.setBounds(0, 0, 800, 600);
 
         //set play button
@@ -60,11 +58,11 @@ public class MenuPage{
         exitButton.setBackground(Color.WHITE);
 
         //List icon
-        JLabel listIconLabel = new JLabel(new ImageIcon("images/List.png"));
+        JLabel listIconLabel = new JLabel(new ImageIcon("images/MenuPage/List.png"));
         listIconLabel.setBounds(180, 30, 400, 500);
 
         //set Main text Snake Game name
-        JLabel mainTextLabel = new JLabel(new ImageIcon("images/SnakeGameName.png"));
+        JLabel mainTextLabel = new JLabel(new ImageIcon("images/MenuPage/SnakeGameName.png"));
         mainTextLabel.setBounds(150, 0, 500, 150);
         
         //version text
@@ -84,4 +82,7 @@ public class MenuPage{
 
     }
 
+    //data
+    private final GameFrame parent;
+    private final JLayeredPane layeredPane;
 }

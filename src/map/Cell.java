@@ -1,11 +1,13 @@
 package map;
 
+
 public class Cell{
     public enum CellType{
         EMPTY,
         SNAKE,
         APPLE
     }
+
 
    //constructors
     public Cell(){
@@ -50,16 +52,13 @@ public class Cell{
         return true;
     }
 
-
     //getters
     public int getRow() {
         return row;
     }
-
     public int getCol() {
         return col;
     }
-
     public CellType getType() {
         return type;
     }
