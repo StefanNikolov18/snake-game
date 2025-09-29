@@ -1,7 +1,8 @@
-import gamepages.*;
+import gamepages.GameFrame;
 
 class Main {
     public static void main(String[] args) {
-        GameFrame game = new GameFrame();
+       GameFrame game = new GameFrame();
+
     }
 }

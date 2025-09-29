@@ -65,7 +65,8 @@ public class GamePage implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
             snakeHead.setLocation(snakeHead.getX(),snakeHead.getY() - 20);
-            
+            if(!game.goUp())
+                isDead = true;
         }
     }
 
@@ -74,6 +75,8 @@ public class GamePage implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
             snakeHead.setLocation(snakeHead.getX(),snakeHead.getY() + 20);
+            if(!game.goDown())
+                isDead = true;
         }
     }
 
@@ -82,6 +85,8 @@ public class GamePage implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
             snakeHead.setLocation(snakeHead.getX() - 20,snakeHead.getY());
+            if(!game.goLeft())
+                isDead = true;
         }
     }
 
@@ -90,6 +95,8 @@ public class GamePage implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
              snakeHead.setLocation(snakeHead.getX() + 20,snakeHead.getY());
+             if(!game.goRight())
+                isDead = true;
         }
     }
 
@@ -109,4 +116,5 @@ public class GamePage implements ActionListener{
     GamePanel gamePanel;
     JLabel snakeHead;
     private Game game;
+    private boolean isDead = false;
 }
