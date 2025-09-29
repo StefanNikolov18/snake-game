@@ -31,16 +31,18 @@ public class Game{
     }
 
     //public method for moving the snake on the board
-    public boolean goLeft(){return moveInDirection(-1,0);}
-    public boolean goRight(){return moveInDirection(1,0);}
-    public boolean goUp(){return moveInDirection(0, -1);}
-    public boolean goDown(){return moveInDirection(0,1);}
+    public boolean goLeft(){return moveInDirection(0,-1);}
+    public boolean goRight(){return moveInDirection(0,1);}
+    public boolean goUp(){return moveInDirection(-1, 0);}
+    public boolean goDown(){return moveInDirection(1,0);}
 
     
-    private boolean moveInDirection(int dx, int dy){
+    private boolean moveInDirection(int dRow, int dCol){
          Cell upcomingCell = new Cell(
-            currentPosHead.getRow() + dx,
-            currentPosHead.getCol() + dy
+            currentPosHead.getRow() + dRow,
+            currentPosHead.getCol() + dCol,
+            board.getCell(currentPosHead.getRow() + dRow,
+            currentPosHead.getCol() + dCol).getType()
         );
         
         //checkins
@@ -112,6 +114,7 @@ public class Game{
         );
     }
 
+
     //data
     private final Snake snake;
     private Cell currentPosHead;
@@ -119,3 +122,27 @@ public class Game{
     private int score;
     private final Random rand;
 }
+
+
+//DEBUGGUNG
+// public void printTable(){
+//         System.out.println("Score: " + score);
+//        for(int i = 0; i < BoardOpt.MAX_ROWS;++i){
+//             for(int j = 0;j < BoardOpt.MAX_COLS;++j){
+//                 switch(board.getCell(i,j).getType()){
+                    
+//                     case SNAKE: System.out.print("S" + " "); break;
+//                     case APPLE: System.out.print("A" + " "); break;
+//                     case EMPTY: 
+//                     default:
+//                         System.out.print("E" + " "); break;
+//                 }
+
+                
+//             }
+//             System.out.println("");
+//        }
+
+//        System.out.println("\n");
+//        
+//     }
