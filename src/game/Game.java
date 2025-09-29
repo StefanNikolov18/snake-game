@@ -10,11 +10,7 @@ public class Game{
 
     public Game(){
         //CurrentPosHead
-        currentPosHead = new Cell(
-            StartPosOpt.STARTING_ROW_SNAKE,
-            StartPosOpt.STARTING_COL_SNAKE,
-            Cell.CellType.SNAKE
-        );
+        currentPosHead = setCurrentPosHead();
 
         //Create snake and place it in start Position
         snake = new Snake(currentPosHead);
@@ -50,7 +46,7 @@ public class Game{
         //checkins
         if(board.isOutside(upcomingCell)) //check is outside
             return false;
-        else if(!snake.isSafe(upcomingCell)) //looks is snake
+        else if(!snake.isSafe(upcomingCell)) //issnake
             return false;
 
         //moving
@@ -100,6 +96,21 @@ public class Game{
         board.getCell(row, col).setType(Cell.CellType.APPLE);
     }
 
+    //restart game
+    public void restartGame(){
+        board.reset();//Set empty cells,places snake and apple
+        currentPosHead = setCurrentPosHead();
+        snake.reset(currentPosHead); //reset data
+        score = 0;
+    }
+
+    private Cell setCurrentPosHead(){
+        return new Cell(
+            StartPosOpt.STARTING_ROW_SNAKE,
+            StartPosOpt.STARTING_COL_SNAKE,
+            Cell.CellType.SNAKE
+        );
+    }
 
     //data
     private final Snake snake;

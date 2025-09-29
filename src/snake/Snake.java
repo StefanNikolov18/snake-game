@@ -43,13 +43,22 @@ public class Snake{
         removeTail(); 
     }
 
-    //helper for Move(Cell)
+    //helper for move(Cell)
     private void removeTail(){ // 0(1)
         snakeMap.remove(this.getTail());
         snake.removeLast();
     }
 
-    
+    public void reset(Cell startCell){
+        //reset data structures
+        snake.clear(); 
+        snakeMap.clear();
+
+        //add first cell
+        snake.addFirst(startCell);
+        snakeMap.put(startCell,true);
+
+    }
 
     //data
     private LinkedList<Cell> snake;

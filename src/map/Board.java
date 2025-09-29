@@ -1,5 +1,7 @@
 package map;
 
+import options.StartPosOpt;
+
 public class Board{
 
     public Board(int rows,int cols){
@@ -39,6 +41,22 @@ public class Board{
             || c.getRow() > board.length
             || c.getCol() > board[0].length;
         
+    }
+
+    public void reset(){
+
+        for(int i = 0;i < board.length;++i){
+            for(int j = 0;j < board[i].length;++j){
+                board[i][j].setType(Cell.CellType.EMPTY);
+            }
+        }
+
+        this.setCellType
+        (StartPosOpt.STARTING_ROW_SNAKE, StartPosOpt.STARTING_COL_SNAKE, Cell.CellType.SNAKE);
+
+        //place apple on board
+        this.setCellType
+        (StartPosOpt.STARTING_ROW_APPLE, StartPosOpt.STARTING_COL_APPLE, Cell.CellType.APPLE);
     }
 
 
