@@ -40,15 +40,18 @@ public class Game{
     private boolean moveInDirection(int dRow, int dCol){
          Cell upcomingCell = new Cell(
             currentPosHead.getRow() + dRow,
-            currentPosHead.getCol() + dCol,
-            board.getCell(currentPosHead.getRow() + dRow,
-            currentPosHead.getCol() + dCol).getType()
+            currentPosHead.getCol() + dCol
         );
         
         //checkins
         if(board.isOutside(upcomingCell)) //check is outside
             return false;
-        else if(!snake.isSafe(upcomingCell)) //issnake
+
+        //is not outside the board and seting the type
+        upcomingCell.setType(board.getCell(currentPosHead.getRow() + dRow,
+            currentPosHead.getCol() + dCol).getType());
+
+        if(!snake.isSafe(upcomingCell)) //issnake
             return false;
 
         //moving
